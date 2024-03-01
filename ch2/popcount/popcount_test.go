@@ -4,8 +4,7 @@
 package popcount_test
 
 import (
-	"testing"
-
+	"testing"             
 	"gopl.io/ch2/popcount"
 )
 

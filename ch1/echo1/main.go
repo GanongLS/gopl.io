@@ -10,13 +10,16 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 
 func main() {
 	var s, sep string
-	for i := 1; i < len(os.Args); i++ {
+	fmt.Println(sep)
+	for i := 1; i < len(os.Args); i++ { // index ke 0 adalah alamat file. 
 		s += sep + os.Args[i]
-		sep = " "
+		sep = strconv.Itoa(i) + ", "
+		// sep = ","
 	}
 	fmt.Println(s)
 }
