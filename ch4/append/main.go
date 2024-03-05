@@ -28,7 +28,7 @@ func appendslice(x []int, y ...int) []int {
 	return z
 }
 
-//!+append
+// !+append
 func appendInt(x []int, y int) []int {
 	var z []int
 	zlen := len(x) + 1
@@ -51,7 +51,17 @@ func appendInt(x []int, y int) []int {
 
 //!-append
 
-//!+growth
+func appendExxample() {
+
+	var x = []int{0}
+	x = append(x, 1)
+	x = append(x, 2, 3)
+	x = append(x, 4, 5, 6)
+	x = append(x, x...) // append the slice x
+	fmt.Println(x)      // "[1 2 3 4 5 6 1 2 3 4 5 6]"
+}
+
+// !+growth
 func main() {
 	var x, y []int
 	for i := 0; i < 10; i++ {
@@ -59,6 +69,14 @@ func main() {
 		fmt.Printf("%d  cap=%d\t%v\n", i, cap(y), y)
 		x = y
 	}
+
+	// var a, b []string
+	// for i := 0; i < 10; i++ {
+	// 	b = appendslice(a, "a")
+	// 	fmt.Printf("%d  cap=%d\t%v\n", i, cap(y), y)
+	// 	x = y
+	// }
+	appendExxample()
 }
 
 //!-growth

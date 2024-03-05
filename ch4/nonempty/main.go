@@ -31,9 +31,33 @@ func main() {
 	fmt.Printf("%q\n", nonempty(data)) // `["one" "three"]`
 	fmt.Printf("%q\n", data)           // `["one" "three" "three"]`
 	//!-main
+
+	data1 := []string{"one", "", "three"}
+	fmt.Printf("%q\n", nonempty2(data1)) // `["one" "three"]`
+	fmt.Printf("%q\n", data1)
+	doRemove()
+	doRemoveAsal()
 }
 
-//!+alt
+func removeAsal(slice []int, i int) []int {
+	slice[i] = slice[len(slice)-1]
+	return slice[:len(slice)-1]
+}
+func doRemoveAsal() {
+	s := []int{5, 6, 7, 8, 9}
+	fmt.Println(removeAsal(s, 2)) // "[5 6 9 8]
+}
+
+func remove(slice []int, i int) []int {
+	copy(slice[i:], slice[i+1:])
+	return slice[:len(slice)-1]
+}
+func doRemove() {
+	s := []int{5, 6, 7, 8, 9}
+	fmt.Println(remove(s, 2)) // "[5 6 8 9]"
+}
+
+// !+alt
 func nonempty2(strings []string) []string {
 	out := strings[:0] // zero-length slice of original
 	for _, s := range strings {
